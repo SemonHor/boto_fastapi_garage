@@ -11,8 +11,8 @@ services:
       - "3903:3903"
     volumes:
       - ./garage.toml:/etc/garage.toml:ro
-      - ./garage-data:/var/lib/garage/data
-      - ./garage-meta:/var/lib/garage/meta
+      - ./garage-data:/storage/garage/data
+      - ./garage-meta:/storage/garage/meta
 
   garage-webui:
     image: khairul169/garage-webui:latest
