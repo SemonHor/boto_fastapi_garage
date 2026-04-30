@@ -1,0 +1,27 @@
+services:
+  garage:
+    image: dxflrs/garage:v2.1.0       # Используем официальный distroless образ
+    container_name: garage
+    restart: unless-stopped
+    command: ["/garage", "server"]    # Указываем полный путь к бинарному файлу
+    ports:
+      - "3900:3900"
+      - "3901:3901"
+      - "3902:3902"
+      - "3903:3903"
+    volumes:
+      - ./garage.toml:/etc/garage.toml:ro
+      - ./garage-data:/var/lib/garage/data
+      - ./garage-meta:/var/lib/garage/meta
+
+  garage-webui:
+    image: khairul169/garage-webui:latest
+    container_name: garage-webui
+    restart: unless-stopped
+    ports:
+      - "3909:3909"
+    volumes:
+      - ./garage.toml:/etc/garage.toml:ro
+    environment:
+      API_BASE_URL: "http://garage:3903"
+      S3_ENDPOINT_URL: "http://garage:3900"
