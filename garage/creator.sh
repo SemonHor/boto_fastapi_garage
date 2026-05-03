@@ -15,3 +15,6 @@ docker exec garage /garage key create data-key
 
 # Подсоединяем ключ data-key к data-bucket с правами к чтению, записи, и владению
 docker exec garage /garage bucket allow data-bucket --read --write --owner --key data-key
+
+# Получение полной информации о data-key
+docker exec garage /garage key info --show-secret data-key
