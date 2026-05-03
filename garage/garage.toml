@@ -6,6 +6,7 @@ replication_factor = 1        # вместо replication_mode = "none"
 consistency_mode = "consistent"      # новая обязательная строчка
 
 rpc_bind_addr = "[::]:3901"
+# openssl rand -hex 32
 rpc_secret = "e86354ffc4d3bc9c75ff3634a0cd5cb5427157d5c565a2f0f472c1edc9d3c007"
 
 [s3_api]
@@ -20,4 +21,5 @@ index = "index.html"
 
 [admin]
 api_bind_addr = "0.0.0.0:3903"
+# openssl rand -base64 48
 admin_token = "JU8KlHjvFUwnZkc6D9YQonR6Q/frTTTOZnMFXPldyCg="
